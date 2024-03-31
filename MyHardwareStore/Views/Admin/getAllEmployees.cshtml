@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MyHardwareStore.Employee>
+
+@{
+    ViewBag.Title = "getAllEmployees";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<h2>Employee List/Info</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.employeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.middleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var employee in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => employee.employeeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => employee.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => employee.middleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => employee.lastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=employee.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "employeeDetails", new { id = employee.employeeId }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=employee.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

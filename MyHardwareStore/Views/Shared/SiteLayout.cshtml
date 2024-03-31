@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="jumbotron text-center font-weight-bolder border border-warning" style="background-color: #003D7D; color: #EC7E22; font-size: 60px; border-radius:50px;">
+                <p>Family Hardware</p>
+            </div>
+            <nav class="navbar navbar-expand-sm shadow border border" style="background-color: #EC7E22; border-radius:20px">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="~/Default/Index">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="~/Default/About">About</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="~/Default/CustomerRegistration">Register</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <article>
+            @RenderBody()
+        </article>
+        <footer>
+            <div class="text-center" style="color: white; background-color: #003D7D; height:30px;">
+                <strong> Site and Graphics By: </strong> hvmair
+            </div>
+        </footer>
+        
+    </div>
+</body>
+</html>
