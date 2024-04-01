@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 
@@ -40,5 +41,34 @@ namespace MyHardwareStore
         [Required(ErrorMessage = "Please Enter a Zip Code")]
         [Display(Name = "Zip Code")]
         public int zipCode { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a TaxID")]
+        [Display(Name = "TaxID")]
+        public long taxID { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a Date Hired")]
+        [Display(Name = "Date Hired")]
+        public DateTime dateHired { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a Date Terminated")]
+        [Display(Name = "Date Terminated")]
+        public DateTime dateTerminated { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a Hourly Wage")]
+        [Display(Name = "Hourly Wage")]
+        public SqlMoney hourlyWage { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a Salary")]
+        [Display(Name = "Salary")]
+        public SqlMoney salary { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a DepartmentID")]
+        [Display(Name = "DepartmentID")]
+        public int departmentID { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a ManagerID")]
+        [Display(Name = "ManagerID")]
+        public int managerID { get; set; }
+
     }
 }
