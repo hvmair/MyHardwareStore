@@ -47,5 +47,29 @@ namespace MyHardwareStore
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult EmployeeRegistration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EmployeeRegistration(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                //The form has all fields filled out and data can be sent to 
+                //Database management system
+                EmployeeTier tier = new EmployeeTier();
+                tier.insertEmployee(employee);
+
+                return View("ThankYou", employee);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
     }
 }

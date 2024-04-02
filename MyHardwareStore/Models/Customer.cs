@@ -8,6 +8,7 @@ namespace MyHardwareStore
 {
     public class Customer
     {
+        [Display(Name = "Customer ID")]
         public int custId { get; set; }
 
         [Required (ErrorMessage = "Please Enter a First Name")]

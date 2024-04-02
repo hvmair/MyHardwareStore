@@ -60,7 +60,14 @@ namespace MyHardwareStore
                             employee.city = (string)reader["City"];
                             employee.state = (string)reader["State"];
                             employee.zipCode = (int)reader["Zip"];
-                            employeeList.Add(employee);
+                            employee.taxID = (long)reader["TaxID"];
+                            employee.dateHired = (DateTime)reader["DateHired"];
+                            employee.dateTerminated = (DateTime)reader["DateTerminated"];
+                            employee.hourlyWage = (SqlMoney)reader["HourlyWage"];
+                            employee.salary = (SqlMoney)reader["Salary"];
+                            employee.departmentID = (int)reader["DepartmentID"];
+                            employee.managerID = (int)reader["ManagerID"];
+                        employeeList.Add(employee);
 
                         }
                     }

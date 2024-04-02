@@ -142,5 +142,62 @@ namespace MyHardwareStore
 
             return success;
         }
+
+        public Customer getCustomerByID(int id)
+        {
+            Customer customer = null;
+            query = "SELECT * FROM CustomerINformation WHERE CustID = @ID;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.Add("@ID",SqlDbType.Int).Value=id;
+
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    customer = new Customer();
+
+                    customer.custId = (int)reader["CustID"];
+                    customer.firstName = (string)reader["FirstName"];
+                    if (reader["MiddleName"] != DBNull.Value)
+                    {
+                        customer.middleName = (string)reader["MiddleName"];
+                    }else
+                    {
+                        customer.middleName = "N/A";
+                    }
+                    customer.lastName = (string)reader["LastName"];
+                    customer.address = (string)reader["Address"];
+                    if (reader["Address2"] != DBNull.Value)
+                    {
+                        customer.address2 = (string)reader["Address2"];
+                    }else
+                    {
+                        customer.address2 = "N/A";
+                    }
+                    customer.city = (string)reader["City"];
+                    customer.state = (string)reader["State"];
+                    customer.zipCode = (int)reader["ZipCode"];
+
+
+                }
+
+            }catch(SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return customer;
+        }
     }
 }

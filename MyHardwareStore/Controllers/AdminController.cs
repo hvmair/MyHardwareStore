@@ -26,8 +26,9 @@ namespace MyHardwareStore
         [HttpGet]
         public ActionResult customerDetails(int id)
         {
-            int number = id;
-            return View(); 
+            CustomerTier tier = new CustomerTier();
+            Customer customer = tier.getCustomerByID(id);
+            return View(customer); 
         }
 
         public ActionResult getAllEmployees()
@@ -45,6 +46,21 @@ namespace MyHardwareStore
         {
             int number = id;
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult editCustomer(int id)
+        {
+            CustomerTier tier = new CustomerTier();
+            Customer customer = tier.getCustomerByID(id);
+            return View(customer);
+        }
+
+        [HttpPost]
+        public ActionResult editCustomer(Customer customer)
+        {
+            CustomerTier tier = new CustomerTier();
+            return View(customer);
         }
     }
 }
