@@ -146,7 +146,7 @@ namespace MyHardwareStore
         public Customer getCustomerByID(int id)
         {
             Customer customer = null;
-            query = "SELECT * FROM CustomerINformation WHERE CustID = @ID;";
+            query = "SELECT * FROM CustomerInformation WHERE CustID = @ID;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
 
@@ -195,7 +195,6 @@ namespace MyHardwareStore
             {
                 conn.Close();
             }
-
 
             return customer;
         }

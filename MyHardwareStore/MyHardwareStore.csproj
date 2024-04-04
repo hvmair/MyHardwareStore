@@ -238,6 +238,7 @@
     <Content Include="Views\Admin\employeeDetails.cshtml" />
     <Content Include="Views\Admin\editCustomer.cshtml" />
     <Content Include="Views\Default\EmployeeRegistration.cshtml" />
+    <Content Include="Views\Default\ThankYouEmp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

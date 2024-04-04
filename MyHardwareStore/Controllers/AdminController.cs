@@ -44,8 +44,9 @@ namespace MyHardwareStore
         [HttpGet]
         public ActionResult employeeDetails(int id)
         {
-            int number = id;
-            return View();
+            EmployeeTier tier = new EmployeeTier();
+            Employee employee = tier.getEmployeeByID(id);
+            return View(employee);
         }
 
         [HttpGet]

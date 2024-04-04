@@ -63,7 +63,7 @@ namespace MyHardwareStore
                 EmployeeTier tier = new EmployeeTier();
                 tier.insertEmployee(employee);
 
-                return View("ThankYou", employee);
+                return View("ThankYouEmp", employee);
             }
             else
             {
