@@ -44,7 +44,7 @@ namespace MyHardwareStore
 
         [Required(ErrorMessage = "Please Enter a TaxID")]
         [Display(Name = "TaxID")]
-        public long taxID { get; set; }
+        public Int64 taxID { get; set; }
 
         [Required(ErrorMessage = "Please Enter a Date Hired")]
         [Display(Name = "Date Hired")]
