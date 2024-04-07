@@ -198,5 +198,71 @@ namespace MyHardwareStore
 
             return customer;
         }
+
+        public bool updateCustomer(Customer customer)
+        {
+            bool success = false;
+            int rows = 0;
+
+            query = "UPDATE CustomerInformation " +
+                "SET FirstName = @FName, MiddleName = @MName, LastName = @LName," +
+                "Address = @Address, Address2 = @Address2, City = @City, State = @State," +
+                "ZipCode = @Zip" +
+                "WHERE CustID = @ID;";
+
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.Add("ID", SqlDbType.Int).Value = customer.custId;
+            cmd.Parameters.Add("@FName", SqlDbType.NVarChar, 50).Value = customer.firstName;
+            if (customer.middleName != "N/A")
+            {
+                cmd.Parameters.Add("@MName", SqlDbType.NVarChar, 50).Value = customer.middleName;
+            }
+            else
+            {
+                cmd.Parameters.Add("@MName", SqlDbType.NVarChar, 50).Value = DBNull.Value;
+            }
+            cmd.Parameters.Add("@LName", SqlDbType.NVarChar, 50).Value = customer.lastName;
+            cmd.Parameters.Add("@Address", SqlDbType.NVarChar, 50).Value = customer.address;
+            if (customer.address2 != "N/A")
+            {
+                cmd.Parameters.Add("@Address2", SqlDbType.NVarChar, 50).Value = customer.address2;
+            }
+            else
+            {
+                cmd.Parameters.Add("@Address2", SqlDbType.NVarChar, 50).Value = DBNull.Value;
+            }
+            cmd.Parameters.Add("@City", SqlDbType.NVarChar, 50).Value = customer.city;
+            cmd.Parameters.Add("@State", SqlDbType.NVarChar, 50).Value = customer.state;
+            cmd.Parameters.Add("@Zip", SqlDbType.Int).Value = customer.zipCode;
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch(SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+
+            return success;
+
+        }
     }
 }

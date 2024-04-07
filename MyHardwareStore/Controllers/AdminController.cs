@@ -54,7 +54,8 @@ namespace MyHardwareStore
         {
             CustomerTier tier = new CustomerTier();
             Customer customer = tier.getCustomerByID(id);
-            return View(customer);
+            tier.updateCustomer(customer);
+            return RedirectToAction("getAllCustomer");
         }
 
         [HttpPost]

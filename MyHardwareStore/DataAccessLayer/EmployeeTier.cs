@@ -60,7 +60,7 @@ namespace MyHardwareStore
                             employee.city = (string)reader["City"];
                             employee.state = (string)reader["State"];
                             employee.zipCode = (int)reader["Zip"];
-                            employee.taxID = (Int64)reader["TaxID"];
+                            employee.taxID = (long)reader["TaxID"];
                             employee.dateHired = (DateTime)reader["DateHired"];
                             employee.dateTerminated = (DateTime)reader["DateTerminated"];
                             employee.hourlyWage = (SqlMoney)reader["HourlyWage"];

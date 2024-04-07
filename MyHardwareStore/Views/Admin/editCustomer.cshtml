@@ -18,8 +18,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.custId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DisplayFor(model => model.custId)
-                @Html.ValidationMessageFor(model => model.custId, "", new { @class = "text-danger" })
+                @Html.DisplayFor(model => model.custId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.custId)
             </div>
         </div>
 
