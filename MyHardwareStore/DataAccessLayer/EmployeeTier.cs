@@ -60,7 +60,14 @@ namespace MyHardwareStore
                             employee.city = (string)reader["City"];
                             employee.state = (string)reader["State"];
                             employee.zipCode = (int)reader["Zip"];
-                            employee.taxID = (long)reader["TaxID"];
+                            if (reader["taxID"] != DBNull.Value)
+                            {
+                                employee.taxID = (long)reader["TaxID"];
+                            }
+                            else
+                            {
+                                employee.taxID = 0;
+                            }
                             employee.dateHired = (DateTime)reader["DateHired"];
                             employee.dateTerminated = (DateTime)reader["DateTerminated"];
                             employee.hourlyWage = (SqlMoney)reader["HourlyWage"];
