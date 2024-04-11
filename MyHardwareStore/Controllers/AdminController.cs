@@ -54,15 +54,35 @@ namespace MyHardwareStore
         {
             CustomerTier tier = new CustomerTier();
             Customer customer = tier.getCustomerByID(id);
-            tier.updateCustomer(customer);
-            return RedirectToAction("getAllCustomer");
+            
+            return View(customer);
         }
 
         [HttpPost]
         public ActionResult editCustomer(Customer customer)
         {
             CustomerTier tier = new CustomerTier();
+            tier.updateCustomer(customer);
+            return RedirectToAction("getAllCustomers");
+        }
+
+        [HttpGet]
+        public ActionResult deleteCustomer(int id)
+        {
+            CustomerTier tier = new CustomerTier();
+            Customer customer = tier.getCustomerByID(id);
+
             return View(customer);
+
+        }
+
+        [HttpPost, ActionName("deleteCustomer")]
+        public ActionResult deleteCustomerInformation(int id)
+        {
+            CustomerTier tier = new CustomerTier();
+            tier.deleteCustomer(id);
+
+            return RedirectToAction("getAllCustomers");
         }
     }
 }

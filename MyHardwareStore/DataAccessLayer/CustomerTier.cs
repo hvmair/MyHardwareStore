@@ -207,8 +207,7 @@ namespace MyHardwareStore
             query = "UPDATE CustomerInformation " +
                 "SET FirstName = @FName, MiddleName = @MName, LastName = @LName," +
                 "Address = @Address, Address2 = @Address2, City = @City, State = @State," +
-                "ZipCode = @Zip" +
-                "WHERE CustID = @ID;";
+                "ZipCode = @Zip WHERE CustID = @ID;";
 
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
@@ -263,6 +262,42 @@ namespace MyHardwareStore
 
             return success;
 
+        }
+
+        public bool deleteCustomer(int id)
+        {
+            bool success = false;
+            int rows = 0;
+            query = "DELETE FROM CustomerInformation Where CustID = @ID;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+                if (rows > 0 )
+                {
+
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+
+            }catch(SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return success;
         }
     }
 }
