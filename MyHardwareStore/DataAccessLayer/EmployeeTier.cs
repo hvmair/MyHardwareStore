@@ -60,7 +60,7 @@ namespace MyHardwareStore
                             employee.city = (string)reader["City"];
                             employee.state = (string)reader["State"];
                             employee.zipCode = (int)reader["Zip"];
-                            if (reader["taxID"] != DBNull.Value)
+                            if (reader["TaxID"] != DBNull.Value)
                             {
                                 employee.taxID = (long)reader["TaxID"];
                             }
@@ -69,9 +69,30 @@ namespace MyHardwareStore
                                 employee.taxID = 0;
                             }
                             employee.dateHired = (DateTime)reader["DateHired"];
-                            employee.dateTerminated = (DateTime)reader["DateTerminated"];
-                            employee.hourlyWage = (SqlMoney)reader["HourlyWage"];
-                            employee.salary = (SqlMoney)reader["Salary"];
+                            if (reader["DateTerminated"] != DBNull.Value)
+                            {
+                                employee.dateTerminated = (DateTime)reader["DateTerminated"];
+                            }
+                            else
+                            {
+                                employee.dateTerminated = new DateTime(2000,01,01);
+                            }
+                            if(reader["HourlyWage"] != DBNull.Value)
+                            {
+                                employee.hourlyWage = (SqlMoney)reader["HourlyWage"];
+                            }
+                            else
+                            {
+                                employee.hourlyWage = 0;
+                            }
+                            if (reader["Salary"] != DBNull.Value)
+                            {
+                                employee.salary = (SqlMoney)reader["Salary"];
+                            }
+                            else
+                            {
+                                employee.salary = 0;
+                            }
                             employee.departmentID = (int)reader["DepartmentID"];
                             employee.managerID = (int)reader["ManagerID"];
                             employeeList.Add(employee);
