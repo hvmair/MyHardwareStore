@@ -56,11 +56,11 @@ namespace MyHardwareStore
 
         [Required(ErrorMessage = "Please Enter a Hourly Wage")]
         [Display(Name = "Hourly Wage")]
-        public SqlMoney hourlyWage { get; set; }
+        public Decimal hourlyWage { get; set; }
 
         [Required(ErrorMessage = "Please Enter a Salary")]
         [Display(Name = "Salary")]
-        public SqlMoney salary { get; set; }
+        public Decimal salary { get; set; }
 
         [Required(ErrorMessage = "Please Enter a DepartmentID")]
         [Display(Name = "DepartmentID")]

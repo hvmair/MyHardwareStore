@@ -68,7 +68,14 @@ namespace MyHardwareStore
                             {
                                 employee.taxID = 0;
                             }
-                            employee.dateHired = (DateTime)reader["DateHired"];
+                            if (reader["DateHired"] != DBNull.Value)
+                            {
+                                employee.dateHired = (DateTime)reader["DateHired"];
+                            }
+                            else
+                            {
+                                employee.dateHired = new DateTime(2000, 01, 01);
+                            }
                             if (reader["DateTerminated"] != DBNull.Value)
                             {
                                 employee.dateTerminated = (DateTime)reader["DateTerminated"];
@@ -79,7 +86,7 @@ namespace MyHardwareStore
                             }
                             if(reader["HourlyWage"] != DBNull.Value)
                             {
-                                employee.hourlyWage = (SqlMoney)reader["HourlyWage"];
+                                employee.hourlyWage = (Decimal)reader["HourlyWage"];
                             }
                             else
                             {
@@ -87,14 +94,28 @@ namespace MyHardwareStore
                             }
                             if (reader["Salary"] != DBNull.Value)
                             {
-                                employee.salary = (SqlMoney)reader["Salary"];
+                                employee.salary = (Decimal)reader["Salary"];
                             }
                             else
                             {
                                 employee.salary = 0;
                             }
-                            employee.departmentID = (int)reader["DepartmentID"];
-                            employee.managerID = (int)reader["ManagerID"];
+                            if (reader["DepartmentID"] != DBNull.Value)
+                            {
+                                employee.departmentID = (int)reader["DepartmentID"];
+                            }
+                            else
+                            {
+                                employee.departmentID = 0;
+                            }
+                            if (reader["ManagerID"] != DBNull.Value)
+                            {
+                                employee.managerID = (int)reader["ManagerID"];
+                            }
+                            else
+                            {
+                                employee.managerID = 0;
+                            }
                             employeeList.Add(employee);
 
                         }
@@ -223,13 +244,62 @@ namespace MyHardwareStore
                     employee.city = (string)reader["City"];
                     employee.state = (string)reader["State"];
                     employee.zipCode = (int)reader["Zip"];
-                    employee.taxID = (long)reader["TaxID"];
-                    employee.dateHired = (DateTime)reader["DateHired"];
-                    employee.dateTerminated = (DateTime)reader["DateTerminated"];
-                    employee.hourlyWage = (SqlMoney)reader["HourlyWage"];
-                    employee.salary = (SqlMoney)reader["Salary"];
-                    employee.departmentID = (int)reader["DepartmentID"];
-                    employee.managerID = (int)reader["ManagerID"];
+                    if (reader["TaxID"] != DBNull.Value)
+                    {
+                        employee.taxID = (long)reader["TaxID"];
+                    }
+                    else
+                    {
+                        employee.taxID = 0;
+                    }
+                    if (reader["DateHired"] != DBNull.Value)
+                    {
+                        employee.dateHired = (DateTime)reader["DateHired"];
+                    }
+                    else
+                    {
+                        employee.dateHired = new DateTime(9999, 01, 01);
+                    }
+                    if (reader["DateTerminated"] != DBNull.Value)
+                    {
+                        employee.dateTerminated = (DateTime)reader["DateTerminated"];
+                    }
+                    else
+                    {
+                        employee.dateTerminated = new DateTime(9999, 01, 01);
+                    }
+                    if (reader["HourlyWage"] != DBNull.Value)
+                    {
+                        employee.hourlyWage = (Decimal)reader["HourlyWage"];
+                    }
+                    else
+                    {
+                        employee.hourlyWage = 0;
+                    }
+                    if (reader["Salary"] != DBNull.Value)
+                    {
+                        employee.salary = (Decimal)reader["Salary"];
+                    }
+                    else
+                    {
+                        employee.salary = 0;
+                    }
+                    if (reader["DepartmentID"] != DBNull.Value)
+                    {
+                        employee.departmentID = (int)reader["DepartmentID"];
+                    }
+                    else
+                    {
+                        employee.departmentID = 0;
+                    }
+                    if (reader["ManagerID"] != DBNull.Value)
+                    {
+                        employee.managerID = (int)reader["ManagerID"];
+                    }
+                    else
+                    {
+                        employee.managerID = 0;
+                    }
 
                 }
 
