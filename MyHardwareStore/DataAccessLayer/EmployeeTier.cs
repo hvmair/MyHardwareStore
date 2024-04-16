@@ -316,5 +316,21 @@ namespace MyHardwareStore
             return employee;
         }
 
+        public bool updateEmployee(Employee employee)
+        {
+            bool success = false;
+            int rows = 0;
+
+            query = "UPDATE EmployeeInformation " +
+                "SET FirstName = @FName, MiddleName = @MName, LastName = @LName," +
+                "Address = @Address, Address2 = @Address2, City = @City, State = @State," +
+                "ZipCode = @Zip, TaxID = @TaxID, DateHired = @DHired, DateTerminated = @DTerminated," +
+                "HourlyWage = @HWage, Salary = @Salary, DepartmentID = @DID, " +
+                "ManagerID = @MID WHERE EmployeeID = @ID;";
+
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+        }
+
     }
 }
