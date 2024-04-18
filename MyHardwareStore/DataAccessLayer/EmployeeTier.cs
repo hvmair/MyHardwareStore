@@ -324,12 +324,68 @@ namespace MyHardwareStore
             query = "UPDATE EmployeeInformation " +
                 "SET FirstName = @FName, MiddleName = @MName, LastName = @LName," +
                 "Address = @Address, Address2 = @Address2, City = @City, State = @State," +
-                "ZipCode = @Zip, TaxID = @TaxID, DateHired = @DHired, DateTerminated = @DTerminated," +
+                "Zip = @ZipCode, TaxID = @TaxID, DateHired = @DHired, DateTerminated = @DTerminated," +
                 "HourlyWage = @HWage, Salary = @Salary, DepartmentID = @DID, " +
                 "ManagerID = @MID WHERE EmployeeID = @ID;";
 
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.Add("ID", SqlDbType.Int).Value = employee.employeeId;
+            cmd.Parameters.Add("@FName", SqlDbType.NVarChar, 50).Value = employee.firstName;
+            if (employee.middleName != "N/A")
+            {
+                cmd.Parameters.Add("@MName", SqlDbType.NVarChar, 50).Value = employee.middleName;
+            }
+            else
+            {
+                cmd.Parameters.Add("@MName", SqlDbType.NVarChar, 50).Value = DBNull.Value;
+            }
+            cmd.Parameters.Add("@LName", SqlDbType.NVarChar, 50).Value = employee.lastName;
+            cmd.Parameters.Add("@Address", SqlDbType.NVarChar, 50).Value = employee.address;
+            if (employee.address2 != "N/A")
+            {
+                cmd.Parameters.Add("@Address2", SqlDbType.NVarChar, 50).Value = employee.address2;
+            }
+            else
+            {
+                cmd.Parameters.Add("@Address2", SqlDbType.NVarChar, 50).Value = DBNull.Value;
+            }
+            cmd.Parameters.Add("@City", SqlDbType.NVarChar, 50).Value = employee.city;
+            cmd.Parameters.Add("@State", SqlDbType.NVarChar, 50).Value = employee.state;
+            cmd.Parameters.Add("@ZipCode", SqlDbType.Int).Value = employee.zipCode;
+            cmd.Parameters.Add("@TaxID", SqlDbType.BigInt).Value = employee.taxID;
+            cmd.Parameters.Add("@DHired", SqlDbType.DateTime).Value = employee.dateHired;
+            cmd.Parameters.Add("@DTerminated", SqlDbType.DateTime).Value = employee.dateTerminated;
+            cmd.Parameters.Add("@HWage", SqlDbType.Money).Value = employee.hourlyWage;
+            cmd.Parameters.Add("@Salary", SqlDbType.Money).Value = employee.salary;
+            cmd.Parameters.Add("@DID", SqlDbType.Int).Value = employee.departmentID;
+            cmd.Parameters.Add("@MID", SqlDbType.Int).Value = employee.managerID;
+
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return success;
         }
 
     }

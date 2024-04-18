@@ -84,5 +84,23 @@ namespace MyHardwareStore
 
             return RedirectToAction("getAllCustomers");
         }
+
+        [HttpGet]
+        public ActionResult editEmployee(int id)
+        {
+            EmployeeTier tier = new EmployeeTier();
+            Employee employee = tier.getEmployeeByID(id);
+
+            return View(employee);
+        }
+
+        [HttpPost]
+        public ActionResult editEmployee(Employee employee)
+        {
+            EmployeeTier tier = new EmployeeTier();
+            tier.updateEmployee(employee);
+            return RedirectToAction("getAllEmployees");
+        }
+
     }
 }

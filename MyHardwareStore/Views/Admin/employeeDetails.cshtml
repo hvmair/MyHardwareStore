@@ -115,9 +115,25 @@
             @Html.DisplayFor(model => model.managerID)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.hourlyWage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hourlyWage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salary)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "editEmployee", new { id = Model.employeeId }) |
     @Html.ActionLink("Employee Listing", "getAllEmployees")
 </p>

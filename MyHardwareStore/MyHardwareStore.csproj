@@ -240,6 +240,7 @@
     <Content Include="Views\Default\EmployeeRegistration.cshtml" />
     <Content Include="Views\Default\ThankYouEmp.cshtml" />
     <Content Include="Views\Admin\deleteCustomer.cshtml" />
+    <Content Include="Views\Admin\editEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
