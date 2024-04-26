@@ -102,5 +102,44 @@ namespace MyHardwareStore
             return RedirectToAction("getAllEmployees");
         }
 
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+
+        public ActionResult AddProduct(Product product, HttpPostedFileBase fileImage)
+        {
+            if(ModelState.IsValid)
+            {
+                if(fileImage != null && fileImage.ContentLength > 0 )
+                {
+                    product.imageType = fileImage.ContentType;
+                    product.productImage = new byte[fileImage.ContentLength];
+
+                    int[] myArray = new int[5];
+
+                    fileImage.InputStream.Read(product.productImage, 0, fileImage.ContentLength);
+                }
+                else
+                {
+                    product.productImage = null;
+                    product.imageType = null;
+                }
+
+                ProductTier tier = new ProductTier();
+
+                tier.insertProduct(product);
+
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
     }
 }

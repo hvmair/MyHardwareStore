@@ -216,11 +216,13 @@
     <Compile Include="DataAccessLayer\BaseTier.cs" />
     <Compile Include="DataAccessLayer\CustomerTier.cs" />
     <Compile Include="DataAccessLayer\EmployeeTier.cs" />
+    <Compile Include="DataAccessLayer\ProductTier.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +243,7 @@
     <Content Include="Views\Default\ThankYouEmp.cshtml" />
     <Content Include="Views\Admin\deleteCustomer.cshtml" />
     <Content Include="Views\Admin\editEmployee.cshtml" />
+    <Content Include="Views\Admin\AddProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
