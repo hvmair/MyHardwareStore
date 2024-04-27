@@ -108,6 +108,7 @@ namespace MyHardwareStore
             return View();
         }
 
+        [HttpPost]
         public ActionResult AddProduct(Product product, HttpPostedFileBase fileImage)
         {
             if(ModelState.IsValid)
