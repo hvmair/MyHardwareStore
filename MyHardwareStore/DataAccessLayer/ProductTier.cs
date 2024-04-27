@@ -30,17 +30,17 @@ namespace MyHardwareStore
             cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = product.productName;
             cmd.Parameters.Add("@CID", SqlDbType.Int).Value = product.categoryID;
             cmd.Parameters.Add("@Price", SqlDbType.Money).Value = product.productPrice;
-            cmd.Parameters.Add("@Image", SqlDbType.Image).Value = product.productImage;
+            cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = product.quantityOnHand;
 
             if ( product.productImage != null )
             {
+                cmd.Parameters.Add("@Image", SqlDbType.Image).Value = product.productImage;
                 cmd.Parameters.Add("@ImgType", SqlDbType.NVarChar, 50).Value = product.imageType;
-                cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = product.quantityOnHand;
             }
             else 
             {
                 cmd.Parameters.Add("@ImgType", SqlDbType.NVarChar, 50).Value = DBNull.Value;
-                cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = DBNull.Value;
+                cmd.Parameters.Add("@Image", SqlDbType.Image).Value = DBNull.Value;
             }
 
             try
