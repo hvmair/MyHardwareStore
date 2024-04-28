@@ -244,6 +244,8 @@
     <Content Include="Views\Admin\deleteCustomer.cshtml" />
     <Content Include="Views\Admin\editEmployee.cshtml" />
     <Content Include="Views\Admin\AddProduct.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\deleteEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

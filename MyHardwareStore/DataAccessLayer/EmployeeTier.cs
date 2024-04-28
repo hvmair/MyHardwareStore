@@ -388,5 +388,42 @@ namespace MyHardwareStore
             return success;
         }
 
+        public bool deleteEmployee(int id)
+        {
+            bool success = false;
+            int rows = 0;
+            query = "DELETE FROM EmployeeInformation Where EmployeeID = @ID;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return success;
+        }
+
     }
 }

@@ -103,12 +103,30 @@ namespace MyHardwareStore
         }
 
         [HttpGet]
+        public ActionResult deleteEmployee(int id)
+        {
+            EmployeeTier tier = new EmployeeTier();
+            Employee employee = tier.getEmployeeByID(id);
+
+            return View(employee);
+
+        }
+
+        [HttpPost, ActionName("deleteEmployee")]
+        public ActionResult deleteEmployeeInformation(int id)
+        {
+            EmployeeTier tier = new EmployeeTier();
+            tier.deleteEmployee(id);
+
+            return RedirectToAction("getAllEmployees");
+        }
+
+        [HttpGet]
         public ActionResult AddProduct()
         {
             return View();
         }
 
-        [HttpPost]
         public ActionResult AddProduct(Product product, HttpPostedFileBase fileImage)
         {
             if(ModelState.IsValid)

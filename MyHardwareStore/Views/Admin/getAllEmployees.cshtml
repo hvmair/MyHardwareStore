@@ -44,9 +44,12 @@
         <td>
             @Html.ActionLink("Edit", "editEmployee", new { id = employee.employeeId }) |
             @Html.ActionLink("Details", "employeeDetails", new { id = employee.employeeId }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=employee.PrimaryKey */ })
+            @Html.ActionLink("Delete", "deleteEmployee", new { id = employee.employeeId })
         </td>
     </tr>
+
 }
 
 </table>
+
+<div>@Html.ActionLink("All Admin Tools", "Index")</div>
