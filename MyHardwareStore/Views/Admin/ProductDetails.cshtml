@@ -1,0 +1,77 @@
+﻿@model MyHardwareStore.Product
+
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<h2>ProductDetails</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.productName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantityOnHand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantityOnHand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoryID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoryID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departmentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departmentID)
+        </dd>
+
+    </dl>
+</div>
+
+@if (Model.productImage != null)
+            {
+                <img src="@Url.Action("ProductImage", "Admin", new { id = Model.productID })",class="img-fluid" />
+            }
+else
+            {
+                <img src="~/Images/NotAvailable.jpg" class="img-fluid" />
+            }
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.productID }) |
+    @Html.ActionLink("All Products", "GetAllProducts")
+</p>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MyHardwareStore.Product>
+
+@{
+    ViewBag.Title = "GetAllProducts";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<h2>All Products </h2>
+
+<p>
+    @Html.ActionLink("Add Product", "AddProduct")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.productName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantityOnHand)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.productName)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.productPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantityOnHand)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.productID }) |
+            @Html.ActionLink("Details", "ProductDetails", new { id=item.productID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.productID })
+        </td>
+    </tr>
+}
+
+</table>

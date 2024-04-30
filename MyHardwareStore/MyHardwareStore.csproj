@@ -223,6 +223,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +247,8 @@
     <Content Include="Views\Admin\AddProduct.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\deleteEmployee.cshtml" />
+    <Content Include="Views\Admin\GetAllProducts.cshtml" />
+    <Content Include="Views\Admin\ProductDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

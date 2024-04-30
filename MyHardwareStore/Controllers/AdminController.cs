@@ -150,7 +150,7 @@ namespace MyHardwareStore
 
                 tier.insertProduct(product);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("GetallProducts");
 
             }
             else
@@ -158,6 +158,39 @@ namespace MyHardwareStore
                 return View();
             }
 
+        }
+
+        public ActionResult GetAllProducts() 
+        {
+            ProductTier tier = new ProductTier();
+            List<Product> products = tier.getAllProducts();
+
+            return View(products);
+        }
+
+        public ActionResult ProductDetails(int id)
+        {
+            ProductTier tier = new ProductTier();
+            Product product = tier.getProductByID(id);
+
+            return View(product);
+        }
+
+        public ActionResult ProductImage(int id) 
+        {
+            ProductImage image;
+            ProductTier tier = new ProductTier();
+
+            image = tier.getProductImage(id);
+
+            if(image != null) 
+            {
+                return File(image.productImage, image.imageType);
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }
