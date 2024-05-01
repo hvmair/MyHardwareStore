@@ -193,5 +193,48 @@ namespace MyHardwareStore
             }
         }
 
+        [HttpGet]
+
+        public ActionResult EditProduct(int id)
+        {
+            ProductTier tier = new ProductTier();
+            Product product = tier.getProductByID(id);
+
+            return View(product);
+        }
+
+        [HttpPost]
+
+        public ActionResult editProduct(Product product, HttpPostedFileBase fileImage)
+        {
+            if(ModelState.IsValid)
+            {
+                ProductTier tier = new ProductTier();
+                if(fileImage != null && fileImage.ContentLength > 0)
+                {
+                    product.imageType = fileImage.ContentType;
+                    product.productImage = new byte[fileImage.ContentLength];
+
+                    fileImage.InputStream.Read(product.productImage, 0, fileImage.ContentLength);
+
+                }
+                else
+                {
+                    ProductImage image = tier.getProductImage(product.productID);
+                    product.productImage = image.productImage;
+                    product.imageType = image.imageType;
+                }
+
+                tier.updateProduct(product);
+
+                return RedirectToAction("GetAllProducts");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
     }
 }

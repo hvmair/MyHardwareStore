@@ -225,7 +225,7 @@ namespace MyHardwareStore
 
             query = "UPDATE Products " +
                 "SET ProductName = @Name, CategoryID = @CID, DepartmentID = @DID, QuantityOnHand = @Quant, " +
-                "Price = @Price, ProductImage = @Image, ImageType = @Type, " +
+                "Price = @Price, ProductImage = @Image, ImageType = @Type " +
                 "WHERE ProductID = @ID;";
 
             conn = new SqlConnection(connectionString);
@@ -237,7 +237,41 @@ namespace MyHardwareStore
             cmd.Parameters.Add("@DID", SqlDbType.Int).Value = product.departmentID;
             cmd.Parameters.Add("@Quant", SqlDbType.Int).Value = product.quantityOnHand;
             cmd.Parameters.Add("@Price", SqlDbType.Money).Value = product.productPrice;
-          
+
+            if (product.productImage != null)
+            {
+                cmd.Parameters.Add("@Image", SqlDbType.Image).Value = product.productImage;
+                cmd.Parameters.Add("@Type", SqlDbType.NVarChar, 50).Value = product.imageType;
+            }
+            else
+            {
+                cmd.Parameters.Add("@Type", SqlDbType.NVarChar, 50).Value = DBNull.Value;
+                cmd.Parameters.Add("@Image", SqlDbType.Image).Value = DBNull.Value;
+            }
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+
+                if( rows > 0 )
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
 
 
 

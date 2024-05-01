@@ -64,14 +64,14 @@
 
 @if (Model.productImage != null)
             {
-                <img src="@Url.Action("ProductImage", "Admin", new { id = Model.productID })",class="img-fluid" />
+                <img src="@Url.Action("ProductImage", "Admin", new { id = Model.productID })",class="img-fluid" style="width: 500px;" />
             }
 else
             {
-                <img src="~/Images/NotAvailable.jpg" class="img-fluid" />
+                <img src="~/Images/NotAvailable.png" class="img-fluid" />
             }
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.productID }) |
-    @Html.ActionLink("All Products", "GetAllProducts")
+    @Html.ActionLink("Edit", "EditProduct", new { id = Model.productID }) |
+    @Html.ActionLink("Product List", "GetAllProducts")
 </p>

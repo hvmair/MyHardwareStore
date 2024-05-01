@@ -36,7 +36,7 @@
             @Html.DisplayFor(modelItem => item.quantityOnHand)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.productID }) |
+            @Html.ActionLink("Edit", "EditProduct", new { id=item.productID }) |
             @Html.ActionLink("Details", "ProductDetails", new { id=item.productID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.productID })
         </td>
